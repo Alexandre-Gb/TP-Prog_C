@@ -26,7 +26,7 @@ int fillArray(int* tab, int size) {
 }
 
 int* allocIntArray(int size) {
-    return malloc(size * sizeof(int));
+    return (int*)malloc(size * sizeof(int));
 }
 
 void freeArray(int* tab) {
@@ -40,7 +40,6 @@ int main(int argc, char *argv[]){
         printf("Error: size must be greater than 0.\n");
         return 1;
     }
-
     
     int* tab = allocIntArray(size);
 
