@@ -47,6 +47,6 @@ int main(int argc, char *argv[]){
     fillArray(tab, size);
     printArray(tab, size);
 
-    free(tab);
+    freeArray(tab);
     return 0;
 }
