@@ -1,6 +1,53 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void print2dArray(int **tab, int dim1, int dim2){
+    int i, j;
+    for (i = 0; i < dim1; i++) {
+        for (j = 0; j < dim2; j++) {
+            printf("%c ", tab[i][j]);
+        }
+        printf("\n");
+    }
+    return;
+}
+
+int fill2dArray(int** tab, int dim1, int dim2) {
+    if (tab == NULL) {
+        printf("Error: tab is NULL.\n");
+        return 1;
+    }
+
+    int i, j;
+    for (i = 0; i < dim1; i++) {
+        for (j = 0; j < dim2; j++) {
+            tab[i][j] = 'a' + (i + j) % 26;
+        }
+    }
+
+    return 0;;
+}
+
+int** alloc2dIntArray(int dim1, int dim2) {
+    int** tab = (int**)malloc(dim1 * sizeof(int*));
+
+    int i;
+    for (i = 0; i < dim1; i++) {
+        tab[i] = (int*)malloc(dim2 * sizeof(int));
+    }
+
+    return tab;
+}
+
+void free2dArray(int **tab, int size){
+    int i;
+    for (i = 0; i < size; i++) {
+        free(tab[i]);
+    }
+    free(tab);
+    return;
+}
+
 int main(int argc, char* argv[]){
     int dim1, dim2;
     printf("Donnez deux dimensions entières : ");
@@ -11,31 +58,12 @@ int main(int argc, char* argv[]){
         return 1;
     }
 
-    int** tab = (int**)malloc(dim1 * sizeof(int*));
+    int** tab = alloc2dIntArray(dim1, dim2);
 
-    int i;
-    for (i = 0; i < dim1; i++) {
-        tab[i] = (int*)malloc(dim2 * sizeof(int));
-    }
+    fill2dArray(tab, dim1, dim2);
+    print2dArray(tab, dim1, dim2);
 
-    int j;
-    for (i = 0; i < dim1; i++) {
-        for (j = 0; j < dim2; j++) {
-            tab[i][j] = 'a' + (i + j) % 26;
-        }
-    }
-
-    for (i = 0; i < dim1; i++) {
-        for (j = 0; j < dim2; j++) {
-            printf("%c ", tab[i][j]);
-        }
-        printf("\n");
-    }
-
-    for (i = 0; i < dim1; i++) {
-        free(tab[i]);
-    }
-    free(tab);
+    free2dArray(tab, dim1);
 
     return 0;
 }
