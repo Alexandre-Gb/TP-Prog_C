@@ -11,6 +11,29 @@ void printArray(int* tab, int size) {
     return;
 }
 
+int fillArray(int* tab, int size) {
+    if (tab == NULL) {
+        printf("Error: tab is NULL.\n");
+        return 1;
+    }
+
+    int i;
+    for (i = 1; i <= size; i++) {
+        tab[i - 1] = i;
+    }
+
+    return 0;;
+}
+
+int* allocIntArray(int size) {
+    return malloc(size * sizeof(int));
+}
+
+void freeArray(int* tab) {
+    free(tab);
+    return;
+}
+
 int main(int argc, char *argv[]){
     int size = atoi(argv[1]);
     if (size < 1) {
@@ -18,15 +41,12 @@ int main(int argc, char *argv[]){
         return 1;
     }
 
-    int* tab = malloc(size * sizeof(int));
-
-    int i;
-    for (i = 1; i <= size; i++) {
-        tab[i - 1] = i;
-    }
-
-    printArray(tab, size);
     
+    int* tab = allocIntArray(size);
+
+    fillArray(tab, size);
+    printArray(tab, size);
+
     free(tab);
     return 0;
 }
