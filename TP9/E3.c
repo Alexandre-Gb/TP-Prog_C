@@ -7,7 +7,6 @@ void printStringArray(char **tab, int size){
     for (i = 0; i < size; i++) {
         printf("%s\n", tab[i]);
     }
-    return;
 }
 
 void fillStringArray(char **tab, int size, char **argv){
@@ -16,7 +15,6 @@ void fillStringArray(char **tab, int size, char **argv){
         tab[i] = (char*)malloc((strlen(argv[i + 1]) + 1) * sizeof(char));
         strcpy(tab[i], argv[i + 1]);
     }
-    return;
 }
 
 char** allocStringArray(int size){
@@ -29,7 +27,6 @@ void freeStringArray(char **tab, int size){
         free(tab[i]);
     }
     free(tab);
-    return;
 }
 
 int main(int argc, char *argv[]){

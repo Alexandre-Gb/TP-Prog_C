@@ -9,7 +9,6 @@ void print2dArray(int **tab, int dim1, int dim2){
         }
         printf("\n");
     }
-    return;
 }
 
 int fill2dArray(int** tab, int dim1, int dim2) {
@@ -45,7 +44,6 @@ void free2dArray(int **tab, int size){
         free(tab[i]);
     }
     free(tab);
-    return;
 }
 
 int main(int argc, char* argv[]){

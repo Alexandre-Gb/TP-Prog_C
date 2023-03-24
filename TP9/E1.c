@@ -8,7 +8,6 @@ void printArray(int* tab, int size) {
         printf("%d ", tab[i]);
     }
     printf("]\n");
-    return;
 }
 
 int fillArray(int* tab, int size) {
@@ -31,7 +30,6 @@ int* allocIntArray(int size) {
 
 void freeArray(int* tab) {
     free(tab);
-    return;
 }
 
 int main(int argc, char *argv[]){
